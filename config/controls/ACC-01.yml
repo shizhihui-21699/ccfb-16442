@@ -1,0 +1,15 @@
+id: ACC-01
+name: 离职员工账号及时禁用
+standard_ref: ISO/IEC 27001:2022 A.5.16 / A.5.18
+version: "1.2.0"
+description: >-
+  员工离职生效后，其在云平台与代码仓库中的账号必须在 24 小时内禁用。
+  引擎依据人事离职日期与各系统账号状态事件流重建违规区间；
+  经审批的例外窗口可豁免对应区间，豁免到期后自动恢复判定。
+params:
+  disable_sla_hours: 24
+data_sources:
+  - hr
+  - aws_iam
+  - gitlab
+evidence_owner: IT 安全运营组

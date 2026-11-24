@@ -1,0 +1,18 @@
+id: CR-01
+name: 受保护分支代码合并须经独立评审
+standard_ref: ISO/IEC 27001:2022 A.8.32
+version: "1.0.1"
+description: >-
+  合并到受保护分支（如 main/master/release/*）的代码，在合并前必须取得
+  至少一名非作者本人的评审批准。作者自行批准、合并后补批均不满足要求。
+  紧急变更可凭已审批的例外工单豁免，例外范围精确到具体合并请求。
+params:
+  protected_branch_patterns:
+    - main
+    - master
+    - "release/*"
+  min_independent_approvals: 1
+data_sources:
+  - gitlab
+  - tickets
+evidence_owner: 研发效能组

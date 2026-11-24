@@ -1,0 +1,15 @@
+id: GOV-01
+name: 跨系统身份映射完整性
+standard_ref: ISO/IEC 27001:2022 A.5.9 / A.5.11
+version: "1.0.0"
+description: >-
+  云平台、代码仓库中的每个账号必须能以足够置信度映射到人事系统中的唯一人员。
+  无法映射或置信度不足的账号进入人工裁决队列；在完成映射前，
+  离职账号禁用等控制对这些账号存在覆盖盲区，须作为治理发现报告。
+params:
+  confidence_threshold: 0.8
+data_sources:
+  - hr
+  - aws_iam
+  - gitlab
+evidence_owner: IAM 治理组

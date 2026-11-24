@@ -1,0 +1,58 @@
+{
+  "_collections": [
+    { "at": "2026-06-30T05:00:00Z", "status": "success", "note": "补丁合规月报" },
+    { "at": "2026-08-04T05:00:00Z", "status": "success", "note": "补丁合规月报（间隔 5 周，模拟月报口径）" },
+    { "at": "2026-09-29T05:00:00Z", "status": "success", "note": "补丁合规月报（间隔 8 周，模拟采集器宕机）" },
+    { "at": "2026-10-06T05:00:00Z", "status": "success", "note": "补丁合规月报" }
+  ],
+  "records": [
+    {
+      "id": "srv-001:KB-2026-2201",
+      "entity_type": "patch",
+      "server_id": "srv-001",
+      "hostname": "api-01.prod",
+      "patch_id": "KB-2026-2201",
+      "severity": "critical",
+      "released_at": "2026-07-10T00:00:00Z",
+      "installed_at": "2026-07-14T03:00:00Z",
+      "observed_at": "2026-07-14T03:00:00Z",
+      "collected_at": "2026-08-04T05:02:00Z"
+    },
+    {
+      "id": "srv-002:KB-2026-3301",
+      "entity_type": "patch",
+      "server_id": "srv-002",
+      "hostname": "trade-01.prod",
+      "patch_id": "KB-2026-3301",
+      "severity": "high",
+      "released_at": "2026-08-20T00:00:00Z",
+      "installed_at": "2026-09-20T02:00:00Z",
+      "observed_at": "2026-09-20T02:00:00Z",
+      "collected_at": "2026-09-29T05:02:00Z"
+    },
+    {
+      "id": "srv-003:KB-2026-4102",
+      "entity_type": "patch",
+      "server_id": "srv-003",
+      "hostname": "worker-01.prod",
+      "patch_id": "KB-2026-4102",
+      "severity": "high",
+      "released_at": "2026-08-25T00:00:00Z",
+      "installed_at": null,
+      "observed_at": "2026-09-29T05:00:00Z",
+      "collected_at": "2026-09-29T05:02:00Z"
+    },
+    {
+      "id": "srv-001:KB-2026-4500",
+      "entity_type": "patch",
+      "server_id": "srv-001",
+      "hostname": "api-01.prod",
+      "patch_id": "KB-2026-4500",
+      "severity": "medium",
+      "released_at": "2026-09-24T00:00:00Z",
+      "installed_at": null,
+      "observed_at": "2026-09-29T05:00:00Z",
+      "collected_at": "2026-09-29T05:02:00Z"
+    }
+  ]
+}

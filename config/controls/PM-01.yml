@@ -1,0 +1,18 @@
+id: PM-01
+name: 服务器安全补丁按 SLA 及时安装
+standard_ref: ISO/IEC 27001:2022 A.8.8 / A.8.9
+version: "1.1.0"
+description: >-
+  按补丁严重级别执行 SLA：critical 7 天、high 15 天、medium 30 天。
+  SLA 截止时间由补丁发布时间统一计算，不采信各系统自报的逾期字段，
+  以消除不同云平台补丁管理器之间的口径差异。
+params:
+  severity_sla_hours:
+    critical: 168
+    high: 360
+    medium: 720
+    default: 720
+data_sources:
+  - cloudpatch
+  - tickets
+evidence_owner: 基础设施运维组

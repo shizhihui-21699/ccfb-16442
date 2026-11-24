@@ -1,0 +1,52 @@
+# 跨系统身份映射表（生产中由 IT 资产台账 + 账号开通流程自动维护）。
+# confidence 低于 GOV-01 阈值的映射不会被采信，账号进入人工裁决队列。
+confidence_threshold: 0.8
+mappings:
+  - source_system: aws_iam
+    external_login: lisi-key
+    person_id: E1002
+    confidence: 1.0
+    source: it_asset_registry
+  - source_system: aws_iam
+    external_login: wangwu-key
+    person_id: E1003
+    confidence: 1.0
+    source: it_asset_registry
+  - source_system: aws_iam
+    external_login: zhaoliu-key
+    person_id: E1004
+    confidence: 0.95
+    source: it_asset_registry
+  - source_system: aws_iam
+    external_login: zhangsan-key
+    person_id: E1001
+    confidence: 1.0
+    source: it_asset_registry
+  # orphan-temp-key 故意不提供映射 —— 演示无法解析的账号进裁决队列
+  - source_system: gitlab
+    external_login: lisi
+    person_id: E1002
+    confidence: 1.0
+    source: sso_scim
+  - source_system: gitlab
+    external_login: wangwu
+    person_id: E1003
+    confidence: 1.0
+    source: sso_scim
+  - source_system: gitlab
+    external_login: zhaoliu
+    person_id: E1004
+    confidence: 0.9
+    source: sso_scim
+  - source_system: gitlab
+    external_login: zhangsan
+    person_id: E1001
+    confidence: 1.0
+    source: sso_scim
+  # 低置信度：用户名相似但缺少台账佐证，不应自动采信
+  - source_system: gitlab
+    external_login: lisi_backup
+    person_id: E1002
+    confidence: 0.4
+    source: username_fuzzy_guess
+  # former_contractor 完全无映射 —— 演示另一种裁决队列来源

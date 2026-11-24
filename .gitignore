@@ -16,3 +16,6 @@ node_modules/
 __pycache__/
 .venv/
 venv/
+
+# 平台运行产物（证据包按需另行封存到归档存储）
+output/

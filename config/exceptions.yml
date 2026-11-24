@@ -1,0 +1,54 @@
+# 例外登记册：对应工单系统中已审批的例外/紧急变更。
+# 生产环境中此文件由工单连接器自动生成，这里以声明式 YAML 演示。
+# 每条例外都经过 ExceptionWindow 的合法性校验（审批状态、SoD、有效期、理由）。
+exceptions:
+  - exception_id: EX-2026-001
+    control_id: ACC-01
+    resource_ref: "account:aws_iam:wangwu-key"
+    start_time: "2026-08-20T00:00:00Z"
+    end_time: "2026-09-05T00:00:00Z"
+    status: approved
+    requested_by: E1003
+    approved_by: M001
+    reason: "离职交接期间保留账号用于客户故障转移，工单 SEC-2201"
+    compensating_controls:
+      - "账号权限收敛为只读，CloudTrail 日志每日人工复核"
+      - "操作需 MFA 且由运维主管实时在线监督"
+
+  - exception_id: EX-2026-002
+    control_id: PM-01
+    resource_ref: "patch:srv-002:KB-2026-3301"
+    start_time: "2026-08-30T00:00:00Z"
+    end_time: "2026-09-12T00:00:00Z"
+    status: approved
+    requested_by: ops_li
+    approved_by: cto_office
+    reason: "该补丁与核心交易系统存在兼容冲突，等待厂商修复版本，工单 CHG-778"
+    compensating_controls:
+      - "主机前增加 WAF 虚拟补丁规则"
+      - "该主机列入每日漏扫重点清单"
+
+  - exception_id: EX-2026-003
+    control_id: CR-01
+    resource_ref: "mr:payments!1042"
+    start_time: "2026-09-18T00:00:00Z"
+    end_time: "2026-09-20T00:00:00Z"
+    status: approved
+    requested_by: E1002
+    approved_by: M001
+    reason: "P1 线上支付故障紧急修复，评审在故障恢复后 24 小时内补做，工单 INC-5520"
+    compensating_controls:
+      - "事后补做双人代码评审并归档"
+      - "紧急变更次日 CAB 追认"
+
+  # 故意保留一条非法例外（自己审批自己），用于演示校验拦截
+  - exception_id: EX-2026-BAD
+    control_id: ACC-01
+    resource_ref: "account:gitlab:zhaoliu"
+    start_time: "2026-09-01T00:00:00Z"
+    end_time: "2026-10-01T00:00:00Z"
+    status: approved
+    requested_by: E1004
+    approved_by: E1004
+    reason: "后补的免责说明，缺少独立审批"
+    compensating_controls: []
